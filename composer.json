@@ -1,0 +1,22 @@
+{
+    "name": "jemer/tea",
+    "type": "library",
+    "require": {
+        "jenssegers/blade": "^1.4",
+        "mnapoli/front-yaml": "^2.0",
+        "bramus/router": "^1.6",
+        "symfony/finder": "^5.4"
+    },
+    "license": "mit",
+    "autoload": {
+        "psr-4": {
+            "Jemer\\Tea\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jemer",
+            "email": "jemerson6989@gmail.com"
+        }
+    ]
+}

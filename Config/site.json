@@ -1,0 +1,6 @@
+{
+    "url": "http://localhost:8000",
+    "sitename": "Tea Site",
+    "homepage": "/Pages/Home.md",
+    "theme": "Default"
+}

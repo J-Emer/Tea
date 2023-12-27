@@ -1,0 +1,17 @@
+//---Todo---//
+    [x] add a "Categories Index Page" to the Post/Category directory
+    [x] check if URI is / or empty
+    [x] auto populate "Category List Page"
+    [x] Blade Directive for
+        [x] Assets
+            [x] Css
+            [x] Js
+            [x] Images
+        [x] Pages
+        [x] Posts
+    [x] need to remove the list.yaml from the list page
+    [x] need to remove the extension from categories list page
+    [] add in a Posts/List to view all of the post categories
+    [] add in a "Check if page exists"
+        if so run the page  
+        if not run 404
