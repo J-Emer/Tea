@@ -47,7 +47,7 @@ class App
         $this->router->get('/', "Controller@index"); //index
         $this->router->get('/pages/.*', "Controller@pages"); //pages
         
-        // $router->get('/posts/list', "App@mainlist"); //---shows all of the post categories -> currently broken
+        //$this->router->get('/posts', "Controller@mainlist"); //---shows all of the post categories -> currently broken
         
         $this->router->get('/posts/.*/list', "Controller@postlist"); //categories
         $this->router->get('/posts/.*', "Controller@posts"); //post      

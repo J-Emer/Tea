@@ -84,7 +84,16 @@ class Controller
     private function Load404()
     {
         echo $this->blade->render($this->config->theme . DIRECTORY_SEPARATOR . '404', []);
-    }    
+    } 
+
+    // public function mainlist()
+    // {
+    //     $categories = PathHelper::GetDirectories(PathHelper::BuildPath([
+    //         $this->root,
+    //         "Content",
+    //         "Posts"
+    //     ]));
+    // }   
 }
 
 ?>
