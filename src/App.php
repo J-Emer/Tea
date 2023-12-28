@@ -30,10 +30,17 @@ class App
     {
         $this->root = ROOT;
 
-        $this->blade = new Blade($this->root . DIRECTORY_SEPARATOR . "Theme", $this->root . DIRECTORY_SEPARATOR . "Theme/Cache");
-    
         $this->config = json_decode(file_get_contents($this->root . DIRECTORY_SEPARATOR . "Config/site.json"));
     
+
+        $themeDir = PathHelper::BuildPath([$this->root, "Theme", $this->config->theme]);
+        $cacheDir = PathHelper::BuildPath([$this->root, "Theme", "Cache"]);
+
+
+        //$this->blade = new Blade($this->root . DIRECTORY_SEPARATOR . "Theme", $this->root . DIRECTORY_SEPARATOR . "Theme/Cache");
+        $this->blade = new Blade($themeDir, $cacheDir);
+    
+
         $this->Directives();
         $this->SetRoutes();
     }

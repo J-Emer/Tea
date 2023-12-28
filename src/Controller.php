@@ -69,7 +69,8 @@ class Controller
 
         $yaml = Yaml::parseFile($path);
         
-        echo $this->blade->render($this->config->theme . DIRECTORY_SEPARATOR . $yaml['template'], ["data" => $yaml, "site" => $this->config]);
+        //echo $this->blade->render($this->config->theme . DIRECTORY_SEPARATOR . $yaml['template'], ["data" => $yaml, "site" => $this->config]);
+        echo $this->blade->render($yaml['template'], ["data" => $yaml, "site" => $this->config]);
     }
     private function LoadContent($file)
     {
@@ -79,7 +80,8 @@ class Controller
         $yaml = $document->getYAML();
         $html = $document->getContent();
 
-        echo $this->blade->render($this->config->theme . DIRECTORY_SEPARATOR . $yaml['template'], ["data" => $yaml, "content" => $html, "site" => $this->config]);
+        //echo $this->blade->render($this->config->theme . DIRECTORY_SEPARATOR . $yaml['template'], ["data" => $yaml, "content" => $html, "site" => $this->config]);
+        echo $this->blade->render($yaml['template'], ["data" => $yaml, "content" => $html, "site" => $this->config]);
     }
     private function Load404()
     {

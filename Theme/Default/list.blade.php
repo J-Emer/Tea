@@ -1,4 +1,4 @@
-@extends('default.main')
+@extends('main')
 
 @section('content')
     
