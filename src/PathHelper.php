@@ -33,10 +33,10 @@ class PathHelper
 
         foreach ($arr as $key) 
         {
-            $str .= $key . DIRECTORY_SEPARATOR;
+            $str .= $key . "/";
         }
 
-        return rtrim($str, DIRECTORY_SEPARATOR);
+        return rtrim($str, "/");
     }
     /**
      * Returns all Files inside of a parent directory

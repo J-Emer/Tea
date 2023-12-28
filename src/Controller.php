@@ -27,7 +27,7 @@ class Controller
      */
     public function index()
     {
-        $path = $this->root . DIRECTORY_SEPARATOR . "Content" . $this->config->homepage;
+        $path = PathHelper::BuildPath([$this->root, "Content", $this->config->homepage]);
         $this->LoadContent($path);
     }
     /**
@@ -35,7 +35,8 @@ class Controller
      */
     public function pages()
     {
-        $path = $this->root . DIRECTORY_SEPARATOR . "Content" . DIRECTORY_SEPARATOR . $_SERVER['REQUEST_URI'] . ".md";
+        $path = PathHelper::BuildPath([$this->root , "Content" , $_SERVER['REQUEST_URI'] . ".md"]);
+
         if(file_exists($path))
         {
             $this->LoadContent($path);
@@ -50,7 +51,8 @@ class Controller
      */
     public function posts()
     {
-        $path = $this->root . DIRECTORY_SEPARATOR . "Content" . DIRECTORY_SEPARATOR . $_SERVER['REQUEST_URI'] . ".md";
+        $path = PathHelper::BuildPath([$this->root , "Content" , $_SERVER['REQUEST_URI'] . ".md"]);
+
         if(file_exists($path))
         {
             $this->LoadContent($path);
@@ -65,11 +67,10 @@ class Controller
      */
     public function postlist()
     {
-        $path = $this->root . DIRECTORY_SEPARATOR . "Content" . DIRECTORY_SEPARATOR . $_SERVER['REQUEST_URI'] . ".yaml";
+        $path = PathHelper::BuildPath([$this->root , "Content" , $_SERVER['REQUEST_URI'] . ".yaml"]);
 
         $yaml = Yaml::parseFile($path);
         
-        //echo $this->blade->render($this->config->theme . DIRECTORY_SEPARATOR . $yaml['template'], ["data" => $yaml, "site" => $this->config]);
         echo $this->blade->render($yaml['template'], ["data" => $yaml, "site" => $this->config]);
     }
     private function LoadContent($file)
@@ -85,7 +86,7 @@ class Controller
     }
     private function Load404()
     {
-        echo $this->blade->render($this->config->theme . DIRECTORY_SEPARATOR . '404', []);
+        echo $this->blade->render('404', []);
     } 
 
     // public function mainlist()
