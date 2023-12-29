@@ -10,7 +10,4 @@ $listBuilder = new ListBuilder();
 $listBuilder->BuildPostList();
 
 
-
-
-
 ?>

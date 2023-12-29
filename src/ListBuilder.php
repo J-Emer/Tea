@@ -46,6 +46,8 @@ class ListBuilder
             $savePath = $dirPath . DIRECTORY_SEPARATOR . "list.yaml";
         
             file_put_contents($savePath, $data);
+
+            echo "Building list for: " . $category . PHP_EOL;
         }        
     }
 
