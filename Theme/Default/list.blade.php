@@ -7,7 +7,7 @@
     <ul>
         @foreach ($data['posts'] as $item)
             <li>
-                <a href="@Url/posts/{{ $data['category']}}/{{ $item }}">{{ $item }}</a>
+                <a href="/posts/{{ $data['category']}}/{{ $item }}">{{ $item }}</a>
             </li>
         @endforeach
     </ul>

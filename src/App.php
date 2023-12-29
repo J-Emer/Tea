@@ -52,19 +52,17 @@ class App
         $this->router->setNamespace('\Jemer\Tea');
         
         $this->router->get('/', "Controller@index"); //index
+
         $this->router->get('/pages/.*', "Controller@pages"); //pages   
         
-        //$this->router->get('/posts/.*/list', "Controller@postlist"); //categories -> old categories route
-
         $this->router->get('/category/.*', "Controller@category"); //categories
 
-        $this->router->get('/posts/.*', "Controller@posts"); //post           
+        $this->router->get('/posts/.*', "Controller@posts"); //post (shows an individual post)         
     }
     public function Run()
     {
         $this->router->run();  
     }
-
     private function Directives()
     {
 

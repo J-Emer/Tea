@@ -20,3 +20,7 @@
         if so run the page  
         if not run 404
             -> handled by the router & controller
+
+
+//---Issues---//
+    [] changing route "/posts/.* and the corresponding method name + updating the paths in the templates causes an error
