@@ -17,6 +17,8 @@ class App
     public $config;
     public $router;
 
+    private $eventManager;
+
     private static $instance;
 
     public static function GetInstance()
@@ -37,13 +39,38 @@ class App
         $themeDir = PathHelper::BuildPath([$this->root, "Theme", $this->config->theme]);
         $cacheDir = PathHelper::BuildPath([$this->root, "Theme", "Cache"]);
 
+        // $this->eventManager = new Manager(
+        //                                     [
+        //                                         "load",
+        //                                         "unload",
+        //                                         "before_run",
+        //                                         "before_render",
+        //                                         "after_run",
+        //                                         "after_render",
+        //                                     ]);
+
+        $this->LoadEvents();
+
         $this->blade = new Blade($themeDir, $cacheDir);
     
         $this->Directives();
         $this->SetRoutes();
     }
 
-   
+    private function LoadEvents()
+    {
+        $path = PathHelper::BuildPath([$this->root, "Config", "events.json"]);
+        $data = json_decode(file_get_contents($path));
+        $this->eventManager = new Manager($data);
+    }
+    public function RegisterEvent(string $event, Closure $callback)
+    {
+        $this->eventManager->Register($event, $callback);
+    }
+    public function FireEvent(string $event)
+    {
+        $this->eventManager->FireEvent($event);
+    }
     private function SetRoutes()
     {
         $this->router = new Router();
@@ -60,7 +87,10 @@ class App
     }
     public function Run()
     {
+        $this->eventManager->FireEvent("load");
+        $this->eventManager->FireEvent("before_run");
         $this->router->run();  
+        $this->eventManager->FireEvent("after_run");
     }
     private function Directives()
     {
