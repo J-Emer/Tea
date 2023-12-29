@@ -10,14 +10,12 @@ use Symfony\Component\Yaml\Yaml;
 
 class Controller
 {
-    private $root;
     private $blade;
     private $config;
 
 
     public function __construct()
     {
-        $this->root = App::GetInstance()->root;
         $this->config = App::GetInstance()->config;
 
         $themeDir = PathHelper::BuildPath([ROOT, "Theme", $this->config->theme]);
@@ -34,7 +32,7 @@ class Controller
         });
         $this->blade->directive("Root", function()
         {
-            return $this->root;
+            return ROOT;
         });
         $this->blade->directive("Assets", function()
         {
@@ -65,7 +63,7 @@ class Controller
      */
     public function index()
     {
-        $path = PathHelper::BuildPath([$this->root, "Content", $this->config->homepage]);
+        $path = PathHelper::BuildPath([ROOT, "Content", $this->config->homepage]);
         $this->LoadContent($path);
     }
     /**
@@ -73,7 +71,7 @@ class Controller
      */
     public function pages()
     {
-        $path = PathHelper::BuildPath([$this->root , "Content" , $_SERVER['REQUEST_URI'] . ".md"]);
+        $path = PathHelper::BuildPath([ROOT , "Content" , $_SERVER['REQUEST_URI'] . ".md"]);
 
         if(file_exists($path))
         {
@@ -89,7 +87,7 @@ class Controller
      */
     public function posts()
     {
-        $path = PathHelper::BuildPath([$this->root , "Content" , $_SERVER['REQUEST_URI'] . ".md"]);
+        $path = PathHelper::BuildPath([ROOT , "Content" , $_SERVER['REQUEST_URI'] . ".md"]);
 
         if(file_exists($path))
         {
@@ -109,7 +107,7 @@ class Controller
 
         $uriPath = str_replace("/category", "Posts", $_SERVER['REQUEST_URI']);
 
-        $path = PathHelper::BuildPath([$this->root , "Content" , $uriPath . "/list.yaml"]);
+        $path = PathHelper::BuildPath([ROOT , "Content" , $uriPath . "/list.yaml"]);
 
         $yaml = Yaml::parseFile($path);
         
@@ -149,7 +147,7 @@ class Controller
 
     protected function GetCategories()
     {
-        $path = $this->root . DIRECTORY_SEPARATOR . "\Content\Posts";
+        $path = ROOT . DIRECTORY_SEPARATOR . "\Content\Posts";
 
         return PathHelper::GetDirectories($path);
     }
@@ -158,7 +156,7 @@ class Controller
     // public function mainlist()
     // {
     //     $categories = PathHelper::GetDirectories(PathHelper::BuildPath([
-    //         $this->root,
+    //         ROOT,
     //         "Content",
     //         "Posts"
     //     ]));
