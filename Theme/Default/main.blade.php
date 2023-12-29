@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tea</title>
-    <link rel="stylesheet" href="@Css/bootstrap.min.css">
+    <link rel="stylesheet" href="@Css(bootstrap.min.css)">
 </head>
 <body>
     
@@ -38,15 +38,6 @@
       <div class="container mt-4">
           @yield('content')
       </div>
-
-
-      <ul>
-          @foreach ($categories as $cat)
-              <li>
-                  <a href="/category/{{ $cat }}">{{ $cat }}</a>
-              </li>
-          @endforeach
-      </ul>
 
 </body>
 </html>
