@@ -1,6 +1,6 @@
 {
     "name": "jemer/tea",
-    "type": "library",
+    "type": "project",
     "require": {
         "jenssegers/blade": "^1.4",
         "mnapoli/front-yaml": "^2.0",
