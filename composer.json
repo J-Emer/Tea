@@ -5,7 +5,8 @@
         "jenssegers/blade": "^1.4",
         "mnapoli/front-yaml": "^2.0",
         "bramus/router": "^1.6",
-        "symfony/finder": "^5.4"
+        "symfony/finder": "^5.4",
+        "jemer/event-dispatcher": "dev-main"
     },
     "license": "mit",
     "autoload": {

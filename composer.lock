@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "889044d3cce2775aad122dfb98dfd2a3",
+    "content-hash": "8d3e3822a48ef17913937f9318be6738",
     "packages": [
         {
             "name": "bramus/router",
@@ -830,6 +830,44 @@
                 "source": "https://github.com/laravel/framework"
             },
             "time": "2022-04-14T13:47:10+00:00"
+        },
+        {
+            "name": "jemer/event-dispatcher",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/J-Emer/EventDispatcher.git",
+                "reference": "a4c9168ddad63a0329a3af61ef6cc931ee3ae312"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/J-Emer/EventDispatcher/zipball/a4c9168ddad63a0329a3af61ef6cc931ee3ae312",
+                "reference": "a4c9168ddad63a0329a3af61ef6cc931ee3ae312",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jemer\\EventDispatcher\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "mit"
+            ],
+            "authors": [
+                {
+                    "name": "Jemer",
+                    "email": "jemerson6989@gmail.com"
+                }
+            ],
+            "description": "create, manages, fires events during your project runtime",
+            "support": {
+                "issues": "https://github.com/J-Emer/EventDispatcher/issues",
+                "source": "https://github.com/J-Emer/EventDispatcher/tree/releasev101"
+            },
+            "time": "2023-08-30T22:08:34+00:00"
         },
         {
             "name": "jenssegers/blade",
@@ -2273,7 +2311,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "jemer/event-dispatcher": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
