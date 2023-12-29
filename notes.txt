@@ -1,6 +1,11 @@
 //---Todo---//
     [x] add a "Categories Index Page" to the Post/Category directory
+        -> this is now solved by using the $categories property that is sent 
+            -> to each page
+
     [x] check if URI is / or empty
+        -> now handled by the controller
+
     [x] auto populate "Category List Page"
     [x] Blade Directive for
         [x] Assets
@@ -11,7 +16,7 @@
         [x] Posts
     [x] need to remove the list.yaml from the list page
     [x] need to remove the extension from categories list page
-    [] add in a Posts/List to view all of the post categories
-    [] add in a "Check if page exists"
+    [x] add in a "Check if page exists"
         if so run the page  
         if not run 404
+            -> handled by the router & controller
