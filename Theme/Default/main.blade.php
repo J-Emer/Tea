@@ -21,15 +21,13 @@
                 <li class="nav-item">
                   <a class="nav-link" href="/pages/about">About</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/posts/dogs/list">Dogs</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/posts/programming/list">Programming</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/posts/travel/list">Travel</a>
-                </li>                
+              
+                @foreach ($categories as $cat)
+                    <li class="nav-item">
+                      <a class="nav-link" href="/posts/{{ $cat }}/list">{{ $cat }}</a>
+                    </li>
+                @endforeach
+
             </ul>
 
           </div>
