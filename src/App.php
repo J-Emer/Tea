@@ -12,8 +12,6 @@ use Symfony\Component\Yaml\Yaml;
 
 class App
 {
-    public $root;
-    public $blade;
     public $config;
     public $router;
 
@@ -32,18 +30,16 @@ class App
 
     public function __construct()
     {
-        $this->root = ROOT;
-
-        $this->config = json_decode(file_get_contents($this->root . DIRECTORY_SEPARATOR . "Config/site.json"));
+        $this->config = json_decode(file_get_contents(ROOT . DIRECTORY_SEPARATOR . "Config/site.json"));
         
         $this->LoadEvents();
-        
+
         $this->SetRoutes();
     }
 
     private function LoadEvents()
     {
-        $path = PathHelper::BuildPath([$this->root, "Config", "events.json"]);
+        $path = PathHelper::BuildPath([ROOT, "Config", "events.json"]);
         $data = json_decode(file_get_contents($path));
         $this->eventManager = new Manager($data);
     }
