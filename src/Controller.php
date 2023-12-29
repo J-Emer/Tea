@@ -111,12 +111,12 @@ class Controller
 
         $yaml = Yaml::parseFile($path);
         
-        echo $this->blade->render($yaml['template'], 
-                                                    [
-                                                        "data" => $yaml, 
-                                                        "site" => $this->config,
-                                                        "categories" => $this->GetCategories()
-                                                    ]);        
+        $this->Render($yaml['template'], 
+                                        [
+                                            "data" => $yaml, 
+                                            "site" => $this->config,
+                                            "categories" => $this->GetCategories()
+                                        ]);
         
         App::GetInstance()->FireEvent("after_render");
     }
@@ -130,19 +130,23 @@ class Controller
         $yaml = $document->getYAML();
         $html = $document->getContent();
 
-        echo $this->blade->render($yaml['template'], 
-                                                    [
-                                                        "data" => $yaml, 
-                                                        "content" => $html, 
-                                                        "site" => $this->config,
-                                                        "categories" => $this->GetCategories()
-                                                    ]);
+        $this->Render($yaml['template'], 
+                                        [
+                                            "data" => $yaml, 
+                                            "content" => $html, 
+                                            "site" => $this->config,
+                                            "categories" => $this->GetCategories()
+                                        ]);
 
         App::GetInstance()->FireEvent("after_render");
     }
+    private function Render(string $template, array $data)
+    {
+        echo $this->blade->render($template, $data);
+    }
     private function Load404()
     {
-        echo $this->blade->render('404', []);
+        echo $this->Render('404', []);
     } 
 
     protected function GetCategories()

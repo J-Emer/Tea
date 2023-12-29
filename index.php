@@ -10,26 +10,12 @@ use Jemer\Tea\RouteSchema;
 
 define("ROOT", __DIR__);
 
+//---Registers a "Load" event
 App::GetInstance()->RegisterEvent("load", function()
 {
-    echo "<p>Load Event</p>";
+    //todo: add code to run when App's load event fires
 });
-App::GetInstance()->RegisterEvent("before_run", function()
-{
-    echo "<p>Before Run Event</p>";
-});
-App::GetInstance()->RegisterEvent("after_run", function()
-{
-    echo "<p>After Run Event</p>";
-});
-App::GetInstance()->RegisterEvent("before_render", function()
-{
-    echo "<p>Before Render Event</p>";
-});
-App::GetInstance()->RegisterEvent("after_render", function()
-{
-    echo "<p>After Render Event</p>";
-});
+
 
 App::GetInstance()->Run();
 
