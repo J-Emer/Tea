@@ -30,7 +30,7 @@ class App
 
     public function __construct()
     {
-        $this->config = json_decode(file_get_contents(ROOT . DIRECTORY_SEPARATOR . "Config/site.json"));
+        $this->config = json_decode(file_get_contents(PathHelper::BuildPath([ROOT, "Config", "site.json"])));
         
         $this->LoadEvents();
 
