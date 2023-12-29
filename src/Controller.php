@@ -18,10 +18,48 @@ class Controller
     public function __construct()
     {
         $this->root = App::GetInstance()->root;
-        $this->blade = App::GetInstance()->blade;
         $this->config = App::GetInstance()->config;
-    }
 
+        $themeDir = PathHelper::BuildPath([ROOT, "Theme", $this->config->theme]);
+        $cacheDir = PathHelper::BuildPath([ROOT, "Theme", "Cache"]);
+
+        $this->blade = new Blade($themeDir, $cacheDir);
+        $this->Directives();
+    }
+    private function Directives()
+    {
+        $this->blade->directive("Url", function()
+        {
+            return $this->config->url;
+        });
+        $this->blade->directive("Root", function()
+        {
+            return $this->root;
+        });
+        $this->blade->directive("Assets", function()
+        {
+            return $this->config->url . DIRECTORY_SEPARATOR . "Assets";
+        });    
+        $this->blade->directive("Css", function(string $css){
+            return $this->config->url . DIRECTORY_SEPARATOR . "Assets" . DIRECTORY_SEPARATOR . "Css" . DIRECTORY_SEPARATOR . $css;
+        });    
+        $this->blade->directive("Js", function(string $js)
+        {
+            return $this->config->url . DIRECTORY_SEPARATOR . "Assets" . DIRECTORY_SEPARATOR . "Js" . DIRECTORY_SEPARATOR . $js;
+        });      
+        $this->blade->directive("Images", function(string $img)
+        {
+            return $this->config->url . DIRECTORY_SEPARATOR . "Assets" . DIRECTORY_SEPARATOR . "Images" . DIRECTORY_SEPARATOR . $img;
+        });      
+        $this->blade->directive("Pages", function()
+        {
+            return $this->config->url . DIRECTORY_SEPARATOR . "Content" . DIRECTORY_SEPARATOR . "Pages";
+        });  
+        $this->blade->directive("Posts", function()
+        {
+            return $this->config->url . DIRECTORY_SEPARATOR . "Content" . DIRECTORY_SEPARATOR . "Posts";
+        });                      
+    }
     /**
      * Runs the Home page that is set in the Config/site.json
      */
