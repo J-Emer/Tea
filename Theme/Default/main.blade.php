@@ -24,7 +24,7 @@
               
                 @foreach ($categories as $cat)
                     <li class="nav-item">
-                      <a class="nav-link" href="/posts/{{ $cat }}/list">{{ $cat }}</a>
+                      <a class="nav-link" href="/category/{{ $cat }}">{{ $cat }}</a>
                     </li>
                 @endforeach
 
@@ -39,6 +39,14 @@
           @yield('content')
       </div>
 
+
+      <ul>
+          @foreach ($categories as $cat)
+              <li>
+                  <a href="/category/{{ $cat }}">{{ $cat }}</a>
+              </li>
+          @endforeach
+      </ul>
 
 </body>
 </html>

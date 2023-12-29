@@ -63,11 +63,13 @@ class Controller
         }
     }
     /**
-     * Returns a Post List (Category)
+     * Returs a list of all posts that are in this category
      */
-    public function postlist()
+    public function category() 
     {
-        $path = PathHelper::BuildPath([$this->root , "Content" , $_SERVER['REQUEST_URI'] . ".yaml"]);
+        $uriPath = str_replace("/category", "Posts", $_SERVER['REQUEST_URI']);
+
+        $path = PathHelper::BuildPath([$this->root , "Content" , $uriPath . "/list.yaml"]);
 
         $yaml = Yaml::parseFile($path);
         
@@ -76,7 +78,7 @@ class Controller
                                                         "data" => $yaml, 
                                                         "site" => $this->config,
                                                         "categories" => $this->GetCategories()
-                                                    ]);
+                                                    ]);        
     }
     private function LoadContent($file)
     {
