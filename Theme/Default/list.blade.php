@@ -2,6 +2,8 @@
 
 @section('content')
     
+    <h2>{{ $data['title'] }}</h2>
+
     <ul>
         @foreach ($data['posts'] as $item)
             <li>

@@ -54,7 +54,7 @@ class ListBuilder
     private function BuildYamlArray(string $category, array $posts)
     {
         $array = [
-            "title" => "list",
+            "title" => $category,
             "template" => "list",
             "category" => $category,
             "posts" => $posts,

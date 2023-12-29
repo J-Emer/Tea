@@ -72,10 +72,11 @@ class Controller
         $yaml = Yaml::parseFile($path);
         
         echo $this->blade->render($yaml['template'], 
-                                                    ["data" => $yaml, 
-                                                    "site" => $this->config,
-                                                    "categories" => $this->GetCategories()
-                                                ]);
+                                                    [
+                                                        "data" => $yaml, 
+                                                        "site" => $this->config,
+                                                        "categories" => $this->GetCategories()
+                                                    ]);
     }
     private function LoadContent($file)
     {
@@ -86,11 +87,12 @@ class Controller
         $html = $document->getContent();
 
         echo $this->blade->render($yaml['template'], 
-                                                    ["data" => $yaml, 
-                                                    "content" => $html, 
-                                                    "site" => $this->config,
-                                                    "categories" => $this->GetCategories()
-                                                ]);
+                                                    [
+                                                        "data" => $yaml, 
+                                                        "content" => $html, 
+                                                        "site" => $this->config,
+                                                        "categories" => $this->GetCategories()
+                                                    ]);
     }
     private function Load404()
     {
