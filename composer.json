@@ -11,7 +11,8 @@
     "license": "mit",
     "autoload": {
         "psr-4": {
-            "Jemer\\Tea\\": "src/"
+            "Jemer\\Tea\\": "src/",
+            "Jemer\\Tea\\Admin\\": "Admin/"
         }
     },
     "authors": [

@@ -5,11 +5,14 @@ require "vendor/autoload.php";
 
 use Bramus\Router\Router;
 use Jemer\EventDispatcher\Manager;
+use Jemer\Tea\Admin\Test;
 use Jemer\Tea\App;
 use Jemer\Tea\Controller;
 use Jemer\Tea\RouteSchema;
 
 define("ROOT", __DIR__);
+
+$test = new Test();
 
 //---Registers a "Load" event
 App::GetInstance()->RegisterEvent("load", function()
