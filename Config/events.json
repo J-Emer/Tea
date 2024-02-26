@@ -1,7 +1,0 @@
-[
-    "load",
-    "before_run",
-    "before_render",
-    "after_run",
-    "after_render"
-]

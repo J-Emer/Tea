@@ -32,25 +32,9 @@ class App
     {
         $this->config = json_decode(file_get_contents(PathHelper::BuildPath([ROOT, "Config", "site.json"])));
         
-        $this->LoadEvents();
-
         $this->SetRoutes();
     }
 
-    private function LoadEvents()
-    {
-        $path = PathHelper::BuildPath([ROOT, "Config", "events.json"]);
-        $data = json_decode(file_get_contents($path));
-        $this->eventManager = new Manager($data);
-    }
-    public function RegisterEvent(string $event, Closure $callback)
-    {
-        $this->eventManager->Register($event, $callback);
-    }
-    public function FireEvent(string $event)
-    {
-        $this->eventManager->FireEvent($event);
-    }
     private function SetRoutes()
     {
         $this->router = new Router();
@@ -63,14 +47,16 @@ class App
         
         $this->router->get('/category/.*', "Controller@category"); //categories
 
-        $this->router->get('/posts/.*', "Controller@posts"); //post (shows an individual post)         
+        $this->router->get('/posts/.*', "Controller@posts"); //post (shows an individual post)        
+
+
+        //-----------------------------------------Admin------------------------------------------------//
+
+
     }
     public function Run()
     {
-        $this->eventManager->FireEvent("load");
-        $this->eventManager->FireEvent("before_run");
         $this->router->run();  
-        $this->eventManager->FireEvent("after_run");
     }
 
 }
