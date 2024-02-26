@@ -103,8 +103,6 @@ class Controller
      */
     public function category() 
     {
-        App::GetInstance()->FireEvent("before_render");
-
         $uriPath = str_replace("/category", "Posts", $_SERVER['REQUEST_URI']);
 
         $path = PathHelper::BuildPath([ROOT , "Content" , $uriPath . "/list.yaml"]);
@@ -118,12 +116,9 @@ class Controller
                                             "categories" => $this->GetCategories()
                                         ]);
         
-        App::GetInstance()->FireEvent("after_render");
     }
     private function LoadContent($file)
     {
-        App::GetInstance()->FireEvent("before_render");
-
         $parser = new Parser();
         $document = $parser->parse(file_get_contents($file));
 
@@ -138,7 +133,6 @@ class Controller
                                             "categories" => $this->GetCategories()
                                         ]);
 
-        App::GetInstance()->FireEvent("after_render");
     }
     private function Render(string $template, array $data)
     {
